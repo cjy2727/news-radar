@@ -89,3 +89,5 @@ git push origin v0.1.1
 ```
 
 GitHub Actions의 **Windows release**가 Windows EXE를 빌드하고 자동 검증을 통과하면 GitHub Releases에 `NewsRadar.exe`와 무결성 확인용 `SHA256SUMS.txt`를 게시합니다. 실패하면 Actions 로그를 확인하세요. 기존 버전 태그를 덮어쓰지 말고 새 버전을 사용하세요. 배포 내용은 `docs/RELEASE-NOTES.md`에서 관리합니다.
+
+
