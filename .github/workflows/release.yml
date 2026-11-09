@@ -41,7 +41,10 @@ jobs:
         run: |
           $draft = gh release view $env:RELEASE_TAG --json isDraft --jq .isDraft 2>$null
           if ($LASTEXITCODE -eq 0) {
-            if ($draft -ne 'true') { throw 'This version is already published. Use a new tag.' }
+            if ($draft -ne 'true') {
+              Write-Output "Release $env:RELEASE_TAG is already published; leaving it unchanged."
+              exit 0
+            }
           } else {
             gh release create $env:RELEASE_TAG --verify-tag --draft --title "News Radar $env:RELEASE_TAG" --notes-file docs/RELEASE-NOTES.md
             if ($LASTEXITCODE -ne 0) { throw 'Release creation failed.' }
